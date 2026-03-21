@@ -21,7 +21,7 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - laravel/pint (PINT) - v1
 - laravel/sail (SAIL) - v1
 - phpunit/phpunit (PHPUNIT) - v11
-- tailwindcss (TAILWINDCSS) - v4
+- tailwindcss (TAILWINDCSS) - v3
 
 
 
@@ -31,7 +31,7 @@ This application is a Laravel application and its main Laravel ecosystems packag
 This project has domain-specific skills available. You MUST activate the relevant skill whenever you work in that domain—don't wait until you're stuck.
 
 - `livewire-development` — Develops reactive Livewire 3 components. Activates when creating, updating, or modifying Livewire components; working with wire:model, wire:click, wire:loading, or any wire: directives; adding real-time updates, loading states, or reactivity; debugging component behavior; writing Livewire tests; or when the user mentions Livewire, component, counter, or reactive UI.
-- `tailwindcss-development` — Styles applications using Tailwind CSS v4 utilities. Activates when adding styles, restyling components, working with gradients, spacing, layout, flex, grid, responsive design, dark mode, colors, typography, or borders; or when the user mentions CSS, styling, classes, Tailwind, restyle, hero section, cards, buttons, or any visual/UI changes.
+- `tailwindcss-development` — Styles applications using Tailwind CSS v3 utilities. Activates when adding styles, restyling components, working with gradients, spacing, layout, flex, grid, responsive design, dark mode, colors, typography, or borders; or when the user mentions CSS, styling, classes, Tailwind, restyle, hero section, cards, buttons, or any visual/UI changes.
 
 
 ## Conventions
@@ -152,6 +152,14 @@ protected function isAccessible(User $user, ?string $path = null): bool
 ## PHPDoc Blocks
 
 - Add useful array shape type definitions when appropriate.
+
+=== tests rules ===
+
+# Test Enforcement
+
+
+- Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
+- Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test --compact` with a specific filename or filter.
 
 === laravel/core rules ===
 
