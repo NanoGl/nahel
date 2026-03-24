@@ -25,7 +25,7 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased min-h-screen flex flex-col">
+<body class="font-sans antialiased min-h-screen flex flex-col max-w-[7680px] m-auto">
 
     @include('layouts.partials.app.header')
 
