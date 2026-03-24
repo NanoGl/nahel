@@ -1,4 +1,4 @@
-<footer class="bg-[#00134B] text-white text-center p-4">
+<footer class="bg-[--variable-secondary] text-white text-center p-4">
     <div class="flex justify-between p-5 items-center">
         <div class="ml-20 flex flex-col gap-3">
             <div>

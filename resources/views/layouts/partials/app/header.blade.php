@@ -1,8 +1,8 @@
 <header class="text-white">
     {{-- Barra naranja --}}
-    <div class="bg-[#FF6700] h-8"></div>
+    <div class="bg-[var(--variable-primary)] h-8"></div>
     {{-- Header con logo --}}
-    <div class="flex bg-[#00134B] p-7 justify-between">
+    <div class="flex bg-[var(--variable-secondary)] p-7 justify-between">
         <div class="justify-center items-center ml-20">
             <img src="{{ asset('images/store/NAHEL_NUEVO.png') }}" alt="NAHEL LOGO" class="max-w-60">
         </div>
@@ -16,7 +16,7 @@
         </div>
     </div>
     {{-- Barra gris con buscador --}}
-    <div class="flex bg-[#727272] py-3 px-4 sm:px-10 min-h-[70px] tracking-wide relative z-50">
+    <div class="flex bg-[var(--variable-tertiary)] py-3 px-4 sm:px-10 min-h-[70px] tracking-wide relative z-50">
         <div class="flex flex-wrap items-center justify-between gap-4 w-full max-w-screen-xl mx-auto">
             <div id="collapseMenu"
                 class="max-lg:hidden lg:!flex lg:items-center max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50">
