@@ -18,6 +18,8 @@
     <!-- Hugeicons -->
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
 
+    <script defer src="https://unpkg.com"></script>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -25,7 +27,7 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased min-h-screen flex flex-col max-w-[7680px] m-auto">
+<body class="font-sans antialiased min-h-screen flex flex-col max-w-[7680px] m-auto bg-[#EFEFEF]">
 
     @include('layouts.partials.app.header')
 
@@ -41,23 +43,8 @@
     @include('layouts.partials.app.footer')
 
     @livewireScripts
+
+    @stack('js')
 </body>
-
-<script>
-    var toggleOpen = document.getElementById('toggleOpen');
-var toggleClose = document.getElementById('toggleClose');
-var collapseMenu = document.getElementById('collapseMenu');
-
-function handleClick() {
-  if (collapseMenu.style.display === 'block') {
-    collapseMenu.style.display = 'none';
-  } else {
-    collapseMenu.style.display = 'block';
-  }
-}
-
-toggleOpen.addEventListener('click', handleClick);
-toggleClose.addEventListener('click', handleClick);
-</script>
 
 </html>
