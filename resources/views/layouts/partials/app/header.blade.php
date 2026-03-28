@@ -1,6 +1,6 @@
 <header class="text-white">
-    {{-- Barra naranja --}}
-    <div class="bg-[var(--variable-primary)] h-8"></div>
+    {{-- Barra color primario --}}
+    @include('layouts.partials.app.primary-bar')
     {{-- Header con logo --}}
     <div class="flex bg-[var(--variable-secondary)] p-7 justify-between">
         <div class="justify-center items-center ml-20">

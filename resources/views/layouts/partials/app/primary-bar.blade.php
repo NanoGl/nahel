@@ -1,0 +1,1 @@
+<div class="bg-[var(--variable-primary)] h-8"></div>
