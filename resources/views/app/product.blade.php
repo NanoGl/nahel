@@ -5,11 +5,7 @@
             <div class="max-h-min max-w-2xl p-10">
                 <div class="mx-auto rounded-xl max-w-max" x-data="{
                     active: 0,
-                    images: [
-                        '{{ asset('images/store/prototype/prueba.png') }}',
-                        '{{ asset('images/store/prototype/banner.png') }}',
-                        '{{ asset('images/store/prototype/prueba2.png') }}'
-                    ],
+                    images: @js($productImages),
                     next() { this.active = (this.active + 1) % this.images.length },
                     prev() { this.active = (this.active - 1 + this.images.length) % this.images.length }
                 }">
@@ -23,13 +19,15 @@
 
                     <div class="flex items-center justify-between gap-4">
 
-                        <button @click="prev()"
-                            class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 19l-7-7m0 0l7-7m-7 7h18""" ) />>
-                            </svg>
-                        </button>
+                        @if (count($productImages) > 1)
+                            <button @click="prev()"
+                                class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                                </svg>
+                            </button>
+                        @endif
 
                         <div class="flex gap-2 overflow-hidden">
                             <template x-for="(img, index) in images" :key="index">
@@ -42,13 +40,15 @@
                             </template>
                         </div>
 
-                        <button @click="next()"
-                            class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </button>
+                        @if (count($productImages) > 1)
+                            <button @click="next()"
+                                class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
         <div class="w-[40%] py-20 mr-20">
             <div class="flex flex-col gap-4">
                 <h1 class="text-xl font-bold">
-                    ACEITE MINERAL PARA MOTOCICLETA NAHEL 4 TIEMPOS 20W-50 SJ
+                    {{ $product['DESCRIPCION'] }}
                 </h1>
                 <div class="flex justify-between">
                     <div>
@@ -67,7 +67,7 @@
                                 CÓDIGO:
                             </span>
                             <span>
-                                MACE000050000
+                                {{ $product['CODIGO'] }}
                             </span>
                         </div>
                         <div>
@@ -75,7 +75,7 @@
                                 MARCA:
                             </span>
                             <span>
-                                NAHEL
+                                {{ $product['MARCA'] }}
                             </span>
                         </div>
                     </div>
@@ -85,15 +85,15 @@
                                 MODELO:
                             </span>
                             <span>
-                                SJ
+                                {{ $product['MODELO'] }}
                             </span>
                         </div>
                         <div>
                             <span class="font-bold text-gray-500">
-                                SUBEMPAQUE:
+                                EMPAQUE:
                             </span>
                             <span>
-                                1
+                                {{ $product['EMPAQUE'] }}
                             </span>
                         </div>
                     </div>
@@ -103,7 +103,15 @@
                                 ORIGEN:
                             </span>
                             <span>
-                                CHINA
+                                {{ $product['ORIGEN'] }}
+                            </span>
+                        </div>
+                        <div>
+                            <span class="font-bold text-gray-500">
+                                SUBEMPAQUE:
+                            </span>
+                            <span>
+                                {{ $product['SUBEMPAQUE'] }}
                             </span>
                         </div>
                     </div>
@@ -116,8 +124,7 @@
                         CARACTERÍSTICAS:
                     </h2>
                     <p>
-                        NO CONTAMINE: EVITE TIRAR EL ACEITE POR EL DESAGÜE O ALCANTARILLADO, Y DISPONGA DE LOS ENVASES Y
-                        ACEITES RESIDUOS EN SITIOS AUTORIZADOS.
+                        {{ $product['CARACTERISTICAS'] }}
                     </p>
                 </div>
                 <div>
@@ -125,7 +132,7 @@
                         RECOMENDACIONES:
                     </h2>
                     <p>
-                        NO SE INGIERA: EN CASO DE SER INGERIDO, EVITE PROVOCAR VOMITO Y RECURRA A SU MÉDICO.
+                        {{ $product['RECOMENDACIONES'] }}
                     </p>
                 </div>
                 <div>
@@ -133,16 +140,8 @@
                         COMPATIBILIDAD:
                     </h2>
                     <p>
-                        APLICACIÓN UNIVERSAL PARA MOTOS DE 4 TIEMPOS.
+                        {{ $product['COMPATIBILIDAD'] }}
                     </p>
-                </div>
-            </div>
-            <div class="flex justify-center gap-4 mt-10">
-                <div>
-                    <label
-                        class="flex justify-center items-center bg-[var(--variable-primary)] text-white text-xl font-bold py-4 px-10 rounded-full">
-                        Más información
-                    </label>
                 </div>
             </div>
             <div class="flex justify-between mt-10 text-gray-600">
@@ -152,11 +151,43 @@
                 </div>
                 <div class="flex items-center gap-1">
                     Comparte este producto:
-                    <i class="fa-regular fa-clone"></i>
+                    <button onclick="copyCurrentUrl()"><i class="fa-regular fa-clone"></i></button>
                     <i class="fa-brands fa-facebook"></i>
                     <i class="fa-brands fa-whatsapp"></i>
                 </div>
             </div>
         </div>
     </div>
+
+    @if (count($relatedProducts) > 0)
+        <div class="px-32 py-4">
+            @include('layouts.partials.app.related-products')
+        </div>
+    @endif
+
+    <div class="px-32 py-4 mb-12">
+        @include('layouts.partials.app.categories')
+    </div>
+
+    @push('js')
+        <script>
+            function copyCurrentUrl() {
+                var dummy = document.createElement('input'),
+                    text = window.location.href;
+
+                document.body.appendChild(dummy);
+                dummy.value = text;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Link copiado al portapapeles",
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+            }
+        </script>
+    @endpush
 </x-store-layout>

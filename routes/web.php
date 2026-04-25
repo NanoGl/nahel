@@ -1,15 +1,11 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    /* return view('welcome'); */
-    return view('app.home');
-});
+Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/product', function () {
-    return view('app.product');
-});
+Route::get('/products/{productCode}', [HomeController::class, 'product']);
 
 Route::middleware([
     'auth:sanctum',
