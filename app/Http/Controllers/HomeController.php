@@ -18,9 +18,25 @@ class HomeController extends Controller
             ->keys()
             ->all();
 
+        $bannerSlides = [
+            [
+                'img' => asset('images/store/prototype/banner-bicicletas.png'),
+                'link' => route('app.categories.bikes')
+            ],
+            [
+                'img' => asset('images/store/prototype/banner.png'),
+                'link' => route('app.categories.motos')
+            ],
+            [
+                'img' => asset('images/store/prototype/banner-ref-bicicletas.png'),
+                'link' => route('app.categories.bike-parts')
+            ],
+        ];
+
         return view('app.home', [
             //'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'bannerSlides' => $bannerSlides
         ]);
     }
 
@@ -32,7 +48,7 @@ class HomeController extends Controller
         $products = $productResponse->json();
         $relatedProducts = $relatedProductsResponse->json();
         $productImages = [];
-        foreach($products as $product){
+        foreach ($products as $product) {
             $productImages[] = $product['IMG'];
         }
 
