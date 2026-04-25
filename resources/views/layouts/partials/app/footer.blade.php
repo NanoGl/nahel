@@ -1,5 +1,5 @@
-<footer class="bg-[--variable-secondary] text-white text-center p-4">
-    <div class="flex justify-between p-5 items-center">
+<footer class="bg-[--variable-secondary] text-white text-center px-4 py-2">
+    <div class="flex justify-between px-5 py-2 items-center">
         <div class="ml-20 flex flex-col gap-3">
             <div>
                 <img src="{{ asset('images/store/NAHEL_NUEVO.png') }}" alt="NAHEL LOGO" class="max-w-52">
