@@ -24,7 +24,7 @@
                 <ul
                     class="lg:!flex lg:gap-x-4 max-lg:space-y-3 max-lg:fixed max-lg:bg-[#151d20] max-lg:w-2/3 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:px-10 max-lg:py-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
                     <li class="max-lg:border-b max-lg:border-gray-100 max-lg:py-3 px-3">
-                        <a href='javascript:void(0)' class="text-white hover:text-gray-300 text-base flex items-center">
+                        <a href='{{ route('app.category', 'BICI') }}' class="text-white hover:text-gray-300 text-base flex items-center">
                             <i class="hgi hgi-stroke hgi-bicycle"></i>
                             <span class="ml-1">
                                 Bicicletas
@@ -32,7 +32,7 @@
                         </a>
                     </li>
                     <li class="max-lg:border-b max-lg:border-gray-100 max-lg:py-3 px-3">
-                        <a href='javascript:void(0)' class="text-white hover:text-gray-300 text-base flex items-center">
+                        <a href='{{ route('app.category', 'RBIC') }}' class="text-white hover:text-gray-300 text-base flex items-center">
                             <i class="hgi hgi-stroke hgi-repair"></i>
                             <span class="ml-1">
                                 Todo para bicicletas
@@ -40,7 +40,7 @@
                         </a>
                     </li>
                     <li class="max-lg:border-b max-lg:border-gray-100 max-lg:py-3 px-3">
-                        <a href='javascript:void(0)' class="text-white hover:text-gray-300 text-base flex items-center">
+                        <a href='{{ route('app.category', 'MOTO') }}' class="text-white hover:text-gray-300 text-base flex items-center">
                             <i class="hgi hgi-stroke hgi-baseball-helmet"></i>
                             <span class="ml-1">
                                 Todo para motocicletas

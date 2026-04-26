@@ -25,11 +25,13 @@
             <div x-ref="container" @scroll.debounce.5ms="update"
                 class="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory touch-pan-x">
                 @foreach ($relatedProducts as $relatedProduct)
-                    <div class="card items-center flex flex-col m-2 w-[25%]">
-                        <figure>
-                            <img class="max-h-[70dvh]" src="{{ $relatedProduct['IMG'] }}?v={{ time() }}"
-                                alt="">
-                        </figure>
+                    <div class="card items-center flex flex-col m-2 w-[25%] justify-between">
+                        <div class="h-full flex justify-center items-center">
+                            <figure>
+                                <img class="" src="{{ $relatedProduct['IMG'] }}?v={{ time() }}"
+                                    alt="">
+                            </figure>
+                        </div>
                         <span class="uppercase">
                             {{ $relatedProduct['DESCRIPCION'] }}
                         </span>

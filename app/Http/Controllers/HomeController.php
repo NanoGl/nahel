@@ -21,15 +21,15 @@ class HomeController extends Controller
         $bannerSlides = [
             [
                 'img' => asset('images/store/prototype/banner-bicicletas.png'),
-                'link' => route('app.categories.bikes')
+                'link' => route('app.category', 'BICI')
             ],
             [
                 'img' => asset('images/store/prototype/banner.png'),
-                'link' => route('app.categories.motos')
+                'link' => route('app.category', 'MOTO')
             ],
             [
                 'img' => asset('images/store/prototype/banner-ref-bicicletas.png'),
-                'link' => route('app.categories.bike-parts')
+                'link' => route('app.category', 'RBIC')
             ],
         ];
 
@@ -60,5 +60,14 @@ class HomeController extends Controller
             ->all();
 
         return view('app.product', compact('product', 'productImages', 'categories', 'relatedProducts'));
+    }
+
+    public function category($categoryName)
+    {
+        $categoryResponse = Http::get(env('NAHEL_PRODUCTS_CATALOG'));
+        $products = collect($categoryResponse->json())
+            ->where('CATEGORIA', $categoryName);
+
+        return view('app.category', compact('categoryName', 'products'));
     }
 }
