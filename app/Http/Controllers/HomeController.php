@@ -40,6 +40,16 @@ class HomeController extends Controller
         ]);
     }
 
+    public function weAre()
+    {
+        return view('app.we-are');
+    }
+
+    public function distributors()
+    {
+        return view('app.distributors');
+    }
+
     public function product($productCode)
     {
         $productResponse = Http::get(env('NAHEL_PRODUCTS_CATALOG') . "/" . $productCode);
