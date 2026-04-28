@@ -4,7 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/we-are', [HomeController::class, 'weAre'])->name('app.we-are');
 Route::get('/distributors', [HomeController::class, 'distributors'])->name('app.distributors');
 Route::get('/products/{productCode}', [HomeController::class, 'product'])->name('app.product');
