@@ -17,7 +17,7 @@
                 </div>
                 <div>
                     <div class="flex justify-center items-end">
-                        <div class="max-w-[90%]">
+                        <div class="max-w-[90%] font-bold text-sm">
                             {{ $product['DESCRIPCION'] }}
                         </div>
                     </div>

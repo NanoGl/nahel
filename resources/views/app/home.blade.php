@@ -59,7 +59,7 @@
 
     @include('layouts.partials.app.primary-bar')
 
-    <div class="m-10 px-32 py-10 mb-12">
+    <div class="m-10 px-4 sm:px-8 md:px-16 lg:px-32 py-2 sm:py-4 md:py-8 lg:py-10 mb-12">
         @include('layouts.partials.app.categories')
     </div>
 
@@ -82,23 +82,4 @@
             </div>
         @endforeach
     </div> --}}
-
-    @push('js')
-        <script>
-            var toggleOpen = document.getElementById('toggleOpen');
-            var toggleClose = document.getElementById('toggleClose');
-            var collapseMenu = document.getElementById('collapseMenu');
-
-            function handleClick() {
-                if (collapseMenu.style.display === 'block') {
-                    collapseMenu.style.display = 'none';
-                } else {
-                    collapseMenu.style.display = 'block';
-                }
-            }
-
-            toggleOpen.addEventListener('click', handleClick);
-            toggleClose.addEventListener('click', handleClick);
-        </script>
-    @endpush
 </x-store-layout>

@@ -10,13 +10,10 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $categoriesResponse = Http::get(env('NAHEL_PRODUCTS_CATALOG'));
+        $categoriesResponse = Http::get(env('NAHEL_CATEGORIES'));
         //$products = $response->json();
         //$products = collect($response->json())->take(20)->all();
-        $categories = collect($categoriesResponse->json())
-            ->groupBy('CATEGORIA')
-            ->keys()
-            ->all();
+        $categories = collect($categoriesResponse->json());
 
         $bannerSlides = [
             [

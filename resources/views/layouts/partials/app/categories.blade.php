@@ -25,14 +25,14 @@
             <div x-ref="container" @scroll.debounce.5ms="update"
                 class="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory touch-pan-x">
                 @foreach ($categories as $category)
-                    <div class="card items-center flex flex-col m-2 w-[25%]">
+                    <div class="card items-center flex flex-col m-2 w-[25%] justify-center">
                         <figure>
                             <img class="max-h-[70dvh]"
                                 src="{{ asset('images/store/prototype/prueba.png') }}?v={{ time() }}"
                                 alt="">
                         </figure>
-                        <span class="uppercase">
-                            {{ $category }}
+                        <span class="uppercase text-center">
+                            {{ $category['DESCRIPCION'] }}
                         </span>
                     </div>
                 @endforeach

@@ -6,8 +6,8 @@
             </h1>
             <div class="bg-[var(--variable-primary)] h-2 w-24"></div>
         </div>
-        <div class="mt-10 flex">
-            <figure class="w-96 pr-7 flex justify-center items-center">
+        <div class="mt-10 block lg:flex">
+            <figure class="lg:w-[50%] w-[33%] mb-3 lg:mb-auto pr-7 flex justify-center items-center">
                 <img class="w-full" src="{{ asset('images/we-are/logo.png') }}?v={{ time() }}" alt="">
             </figure>
             <div class="flex flex-col justify-center">
@@ -32,8 +32,8 @@
             </h1>
             <div class="bg-[var(--variable-primary)] h-2 w-24"></div>
         </div>
-        <div class="mt-6 flex">
-            <div class="flex flex-col justify-center">
+        <div class="mt-6 flex flex-col lg:flex-row">
+            <div class="flex flex-col justify-center order-2 lg:order-1">
                 <p class="text-justify text-lg">
                     La historia de NAHEL comienza con Don Nabor Herrera Lugo, quien trabajaba
                     en la tienda de bicicletas "La Nacional". Tras su jubilación, Don Nabor instaló
@@ -44,7 +44,8 @@
                     de la República Mexicana.
                 </p>
             </div>
-            <figure class="w-[52rem] pl-7 flex justify-center items-center">
+            <figure
+                class="lg:w-[52rem] w-[50%] mb-3 lg:mb-auto pl-7 flex justify-center items-center order-1 lg:order-2">
                 <img class="w-full" src="{{ asset('images/we-are/bicis-bn.png') }}?v={{ time() }}"
                     alt="">
             </figure>
