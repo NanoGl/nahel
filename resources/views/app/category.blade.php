@@ -25,4 +25,8 @@
             </a>
         @endforeach
     </div>
+
+    <div class="mt-4 mb-4 flex justify-center">
+        {{ $products->links() }}
+    </div>
 </x-store-layout>

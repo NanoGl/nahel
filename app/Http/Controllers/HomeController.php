@@ -73,7 +73,9 @@ class HomeController extends Controller
     {
         $productsResponse = Http::get(config('services.nahel.products_catalog_url'));
         $products = collect($productsResponse->json())
-            ->where('CATEGORIA', $categoryName);
+            ->where('CATEGORIA', $categoryName)
+            ->paginate(40);
+
         $categoryResponse = Http::get(config('services.nahel.categories_url'));
         $category = collect($categoryResponse->json())
             ->where('CATEGORIA', $categoryName);
