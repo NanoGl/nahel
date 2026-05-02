@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $categoriesResponse = Http::get(env('NAHEL_CATEGORIES'));
+        $categoriesResponse = Http::get(config('services.nahel.categories_url'));
         //$products = $response->json();
         //$products = collect($response->json())->take(20)->all();
         $categories = collect($categoriesResponse->json());
@@ -47,11 +47,11 @@ class HomeController extends Controller
         return view('app.distributors');
     }
 
-    public function product($productCode)
+    public function product(string $productCode)
     {
-        $productResponse = Http::get(env('NAHEL_PRODUCTS_CATALOG') . "/" . $productCode);
-        $relatedProductsResponse = Http::get(env('NAHEL_PRODUCTS_SIMILAR') . $productCode);
-        $categoriesResponse = Http::get(env('NAHEL_PRODUCTS_CATALOG'));
+        $productResponse = Http::get(config('services.nahel.products_catalog_url') . "/" . $productCode);
+        $relatedProductsResponse = Http::get(config('services.nahel.products_similar_url') . $productCode);
+        $categoriesResponse = Http::get(config('services.nahel.products_catalog_url'));
         $products = $productResponse->json();
         $relatedProducts = $relatedProductsResponse->json();
         $productImages = [];
@@ -69,12 +69,18 @@ class HomeController extends Controller
         return view('app.product', compact('product', 'productImages', 'categories', 'relatedProducts'));
     }
 
-    public function category($categoryName)
+    public function category(string $categoryName)
     {
-        $categoryResponse = Http::get(env('NAHEL_PRODUCTS_CATALOG'));
-        $products = collect($categoryResponse->json())
+        $productsResponse = Http::get(config('services.nahel.products_catalog_url'));
+        $products = collect($productsResponse->json())
+            ->where('CATEGORIA', $categoryName);
+        $categoryResponse = Http::get(config('services.nahel.categories_url'));
+        $category = collect($categoryResponse->json())
             ->where('CATEGORIA', $categoryName);
 
-        return view('app.category', compact('categoryName', 'products'));
+        return view('app.category', [
+            'products' => $products,
+            'categoryName' => $category->first()['DESCRIPCION']
+        ]);
     }
 }

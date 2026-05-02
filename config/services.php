@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    'nahel' => [
+        'categories_url' => env('NAHEL_CATEGORIES'),
+        'products_catalog_url' => env('NAHEL_PRODUCTS_CATALOG'),
+        'products_detail_url' => env('NAHEL_PRODUCTS_DETAIL'),
+        'products_similar_url' => env('NAHEL_PRODUCTS_SIMILAR'),
+    ],
+
 ];
