@@ -11,9 +11,12 @@ class HomeController extends Controller
     public function home()
     {
         $categoriesResponse = Http::get(config('services.nahel.categories_url'));
-        //$products = $response->json();
-        //$products = collect($response->json())->take(20)->all();
         $categories = collect($categoriesResponse->json());
+
+        $newProductsResponse = Http::get(config('services.nahel.products_catalog_url'));
+        $newProducts = collect($newProductsResponse->json())
+            ->where('ESNUEVO', 'NUEVO')
+            ->all();
 
         $bannerSlides = [
             [
@@ -33,6 +36,7 @@ class HomeController extends Controller
         return view('app.home', [
             //'products' => $products,
             'categories' => $categories,
+            'newProducts' => $newProducts,
             'bannerSlides' => $bannerSlides
         ]);
     }
@@ -51,7 +55,7 @@ class HomeController extends Controller
     {
         $productResponse = Http::get(config('services.nahel.products_catalog_url') . "/" . $productCode);
         $relatedProductsResponse = Http::get(config('services.nahel.products_similar_url') . $productCode);
-        $categoriesResponse = Http::get(config('services.nahel.products_catalog_url'));
+        $categoriesResponse = Http::get(config('services.nahel.categories_url'));
         $products = $productResponse->json();
         $relatedProducts = $relatedProductsResponse->json();
         $productImages = [];
@@ -62,8 +66,6 @@ class HomeController extends Controller
         $product = $products[0];
 
         $categories = collect($categoriesResponse->json())
-            ->groupBy('CATEGORIA')
-            ->keys()
             ->all();
 
         return view('app.product', compact('product', 'productImages', 'categories', 'relatedProducts'));

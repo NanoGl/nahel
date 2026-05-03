@@ -36,7 +36,7 @@
             </div>
         @endforeach
 
-        <!-- Botones de navegación (Opcional) -->
+        <!-- Botones de navegación -->
         <button @click="active = (active - 1 + {{ count($bannerSlides) }}) % {{ count($bannerSlides) }}"
             class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white p-2 rounded-full">
             &larr;
@@ -59,8 +59,16 @@
 
     @include('layouts.partials.app.primary-bar')
 
-    <div class="m-10 px-4 sm:px-8 md:px-16 lg:px-32 py-2 sm:py-4 md:py-8 lg:py-10 mb-12">
+    <div class="m-10 px-4 sm:px-8 md:px-16 lg:px-32 pt-2 sm:pt-4 md:pt-8 lg:pt-10 mb-16">
         @include('layouts.partials.app.categories')
+    </div>
+    
+    <div class="my-2">
+        @include('layouts.partials.app.home-banner-1')
+    </div>
+    
+    <div class="m-4 px-4 sm:px-8 md:px-16 lg:px-32 py-2 sm:py-4 md:py-8 lg:py-10 mb-12">
+        @include('layouts.partials.app.new-products')
     </div>
 
     {{-- <div class="grid grid-cols-3">

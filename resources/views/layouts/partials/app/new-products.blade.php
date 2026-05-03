@@ -1,7 +1,7 @@
 <div>
     <div class="flex flex-col gap-2">
         <h1 class="text-3xl font-bold">
-            Explora nuestras categorías más vistas:
+            Nuevos productos
         </h1>
         <div class="bg-[var(--variable-primary)] h-2 w-24"></div>
     </div>
@@ -24,15 +24,16 @@
 
             <div x-ref="container" @scroll.debounce.5ms="update"
                 class="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory touch-pan-x">
-                @foreach ($categories as $category)
-                    <div class="card items-center flex flex-col m-2 min-w-48 justify-center">
-                        <figure>
-                            <img class="max-h-[70dvh]"
-                                src="{{ asset('images/store/prototype/prueba.png') }}?v={{ time() }}"
-                                alt="">
-                        </figure>
-                        <span class="uppercase text-center">
-                            {{ $category['DESCRIPCION'] }}
+                @foreach ($newProducts as $newProduct)
+                    <div class="card items-center flex flex-col m-2 min-w-48 justify-between">
+                        <div class="h-full flex justify-center items-center">
+                            <figure>
+                                <img class="" src="{{ $newProduct['IMG'] }}?v={{ time() }}"
+                                    alt="">
+                            </figure>
+                        </div>
+                        <span class="uppercase">
+                            {{ $newProduct['DESCRIPCION'] }}
                         </span>
                     </div>
                 @endforeach
