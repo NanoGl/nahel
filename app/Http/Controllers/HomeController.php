@@ -46,6 +46,11 @@ class HomeController extends Controller
         return view('app.we-are');
     }
 
+    public function contactUs()
+    {
+        return view('app.contact-us');
+    }
+
     public function distributors()
     {
         return view('app.distributors');

@@ -30,8 +30,14 @@
                     class="hover:bg-[var(--variable-secondary-hover)] transition-all duration-300 rounded-lg px-3 py-1">
                     <li>Quiénes Somos</li>
                 </a>
-                <li>Distribuidores</li>
-                <li>Contacto</li>
+                <a href="{{ route('app.distributors') }}"
+                    class="hover:bg-[var(--variable-secondary-hover)] transition-all duration-300 rounded-lg px-3 py-1">
+                    <li>Distribuidores</li>
+                </a>
+                <a href="{{ route('app.contact-us') }}"
+                    class="hover:bg-[var(--variable-secondary-hover)] transition-all duration-300 rounded-lg px-3 py-1">
+                    <li>Contacto</li>
+                </a>
                 <li>Mi Cuenta</li>
             </ol>
         </div>
@@ -94,7 +100,7 @@
                     x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
                     x-transition:leave="transition transform ease-in duration-200"
                     x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
-                    class="max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:w-2/3 max-lg:min-w-[280px] max-lg:h-full max-lg:bg-[#151d20] max-lg:shadow-2xl max-lg:px-6 max-lg:py-6 max-lg:overflow-auto z-[60] lg:flex lg:gap-x-4">
+                    class="max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:w-2/3 max-lg:min-w-[280px] max-lg:h-full max-lg:bg-[var(--variable-secondary)] max-lg:shadow-2xl max-lg:px-6 max-lg:py-6 max-lg:overflow-auto z-[60] lg:flex lg:gap-x-4">
 
                     <li class="lg:hidden flex justify-end mb-6">
                         <button @click="open = false" class="text-white text-2xl">&times;</button>
@@ -123,7 +129,13 @@
                     </li>
 
                     <li class="lg:hidden max-lg:border-b max-lg:border-gray-700 max-lg:py-3 px-3">
-                        <a href="{{ route('app.we-are') }}" class="text-white">Quiénes Somos</a>
+                        <a href="{{ route('app.we-are') }}" class="flex text-white hover:text-gray-300">Quiénes Somos</a>
+                    </li>
+                    <li class="lg:hidden max-lg:border-b max-lg:border-gray-700 max-lg:py-3 px-3">
+                        <a href="{{ route('app.distributors') }}" class="flex text-white hover:text-gray-300">Distribuidores</a>
+                    </li>
+                    <li class="lg:hidden max-lg:border-b max-lg:border-gray-700 max-lg:py-3 px-3">
+                        <a href="{{ route('app.contact-us') }}" class="flex text-white hover:text-gray-300">Contacto</a>
                     </li>
                 </ul>
             </div>
