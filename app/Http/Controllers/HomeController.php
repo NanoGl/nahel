@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactUsMailable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -46,9 +48,31 @@ class HomeController extends Controller
         return view('app.we-are');
     }
 
-    public function contactUs()
+    public function contactUsForm()
     {
         return view('app.contact-us');
+    }
+
+    public function contactUsSend(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'message' => 'required',
+        ]);
+
+        Mail::to('orgonlan2@gmail.com')
+            ->send(new ContactUsMailable($request->all()));
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Mensaje enviado!',
+            'text' => 'Nos pondremos en contacto contigo'
+        ]);
+
+        return redirect()->route('app.contact-us');
     }
 
     public function distributors()
