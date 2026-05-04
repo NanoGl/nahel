@@ -27,15 +27,15 @@
         <div class="hidden lg:flex justify-center items-center mr-20">
             <ol class="inline-flex flex-wrap h-full items-center gap-4">
                 <a href="{{ route('app.we-are') }}"
-                    class="hover:bg-[var(--variable-secondary-hover)] transition-all duration-300 rounded-lg px-3 py-1">
+                    class="hover:bg-[var(--variable-secondary-hover)] transition-all duration-300 rounded-lg px-3 py-1 {{ request()->routeIs('app.we-are') ? 'bg-[var(--variable-secondary-hover)]' : '' }}">
                     <li>Quiénes Somos</li>
                 </a>
                 <a href="{{ route('app.distributors') }}"
-                    class="hover:bg-[var(--variable-secondary-hover)] transition-all duration-300 rounded-lg px-3 py-1">
+                    class="hover:bg-[var(--variable-secondary-hover)] transition-all duration-300 rounded-lg px-3 py-1 {{ request()->routeIs('app.distributors') ? 'bg-[var(--variable-secondary-hover)]' : '' }}">
                     <li>Distribuidores</li>
                 </a>
                 <a href="{{ route('app.contact-us') }}"
-                    class="hover:bg-[var(--variable-secondary-hover)] transition-all duration-300 rounded-lg px-3 py-1">
+                    class="hover:bg-[var(--variable-secondary-hover)] transition-all duration-300 rounded-lg px-3 py-1 {{ request()->routeIs('app.contact-us') ? 'bg-[var(--variable-secondary-hover)]' : '' }}">
                     <li>Contacto</li>
                 </a>
                 <li>Mi Cuenta</li>
@@ -108,34 +108,34 @@
 
                     <li class="max-lg:border-b max-lg:border-gray-700 max-lg:py-3 px-3">
                         <a href="{{ route('app.category', 'BICI') }}"
-                            class="text-white hover:text-gray-300 flex items-center">
+                            class="rounded-md p-1 text-white hover:text-gray-300 flex items-center {{ request()->routeIs('app.category') && request()->route('categoryName') == 'BICI' ? 'bg-[var(--variable-secondary-hover)] sm:bg-[var(--variable-tertiary-dark)]' : '' }}">
                             <i class="hgi hgi-stroke hgi-bicycle"></i>
                             <span class="ml-2">Bicicletas</span>
                         </a>
                     </li>
                     <li class="max-lg:border-b max-lg:border-gray-700 max-lg:py-3 px-3">
                         <a href="{{ route('app.category', 'RBIC') }}"
-                            class="text-white hover:text-gray-300 flex items-center">
+                            class="rounded-md p-1 text-white hover:text-gray-300 flex items-center {{ request()->routeIs('app.category') && request()->route('categoryName') == 'RBIC' ? 'bg-[var(--variable-secondary-hover)] lg:bg-[var(--variable-tertiary-dark)]' : '' }}">
                             <i class="hgi hgi-stroke hgi-repair"></i>
                             <span class="ml-2">Todo para bicicletas</span>
                         </a>
                     </li>
                     <li class="max-lg:border-b max-lg:border-gray-700 max-lg:py-3 px-3">
                         <a href="{{ route('app.category', 'MOTO') }}"
-                            class="text-white hover:text-gray-300 flex items-center">
+                            class="rounded-md p-1 text-white hover:text-gray-300 flex items-center {{ request()->routeIs('app.category') && request()->route('categoryName') == 'MOTO' ? 'bg-[var(--variable-secondary-hover)] lg:bg-[var(--variable-tertiary-dark)]' : '' }}">
                             <i class="hgi hgi-stroke hgi-baseball-helmet"></i>
                             <span class="ml-2">Todo para motocicletas</span>
                         </a>
                     </li>
 
                     <li class="lg:hidden max-lg:border-b max-lg:border-gray-700 max-lg:py-3 px-3">
-                        <a href="{{ route('app.we-are') }}" class="flex text-white hover:text-gray-300">Quiénes Somos</a>
+                        <a href="{{ route('app.we-are') }}" class="rounded-md p-1 flex text-white hover:text-gray-300 {{ request()->routeIs('app.we-are') ? 'bg-[var(--variable-secondary-hover)]' : '' }}">Quiénes Somos</a>
                     </li>
                     <li class="lg:hidden max-lg:border-b max-lg:border-gray-700 max-lg:py-3 px-3">
-                        <a href="{{ route('app.distributors') }}" class="flex text-white hover:text-gray-300">Distribuidores</a>
+                        <a href="{{ route('app.distributors') }}" class="rounded-md p-1 flex text-white hover:text-gray-300 {{ request()->routeIs('app.distributors') ? 'bg-[var(--variable-secondary-hover)]' : '' }}">Distribuidores</a>
                     </li>
                     <li class="lg:hidden max-lg:border-b max-lg:border-gray-700 max-lg:py-3 px-3">
-                        <a href="{{ route('app.contact-us') }}" class="flex text-white hover:text-gray-300">Contacto</a>
+                        <a href="{{ route('app.contact-us') }}" class="rounded-md p-1 flex text-white hover:text-gray-300 {{ request()->routeIs('app.contact-us') ? 'bg-[var(--variable-secondary-hover)]' : '' }}">Contacto</a>
                     </li>
                 </ul>
             </div>
