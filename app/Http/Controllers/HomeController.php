@@ -105,7 +105,7 @@ class HomeController extends Controller
         $productsResponse = Http::get(config('services.nahel.products_catalog_url'));
         $products = collect($productsResponse->json())
             ->where('CATEGORIA', $categoryName)
-            ->paginate(40);
+            ->paginate(20);
 
         $categoryResponse = Http::get(config('services.nahel.categories_url'));
         $category = collect($categoryResponse->json())
@@ -114,6 +114,25 @@ class HomeController extends Controller
         return view('app.category', [
             'products' => $products,
             'categoryName' => $category->first()['DESCRIPCION']
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $search = strtolower($request->input('searchField'));
+
+        $productsResponse = Http::get(config('services.nahel.products_catalog_url'));
+
+        $searchResults = collect($productsResponse->json())->filter(function ($item) use ($search) {
+            return str_contains(strtolower($item['CODIGO']), $search)
+                || str_contains(strtolower($item['FICHA']), $search)
+                || str_contains(strtolower($item['DESCRIPCION']), $search);
+        })->paginate(20)
+        ->withQueryString();
+
+        return view('app.search-results', [
+            'products' => $searchResults,
+            'userSearch' => $request->input('searchField')
         ]);
     }
 }

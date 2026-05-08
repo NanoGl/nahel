@@ -146,12 +146,14 @@
                     class="bg-transparent border-none text-sm w-full px-4 h-7 outline-none focus:ring-0 max-sm:hidden" />
                 <i class="fa-solid fa-magnifying-glass mr-2"></i>
             </div> --}}
-            <div
-                class="flex items-center w-full max-w-72 bg-white border text-gray-500 border-gray-300 rounded-lg overflow-hidden">
-                <input type="text" placeholder="Buscar..." name="searchField"
-                    class="bg-transparent border-none text-sm w-full px-4 h-8 outline-none focus:ring-0" />
-                <button class="px-3"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
+            <form action="{{ route('app.search') }}" method="GET">
+                <div
+                    class="flex items-center w-full max-w-72 bg-white border text-gray-500 border-gray-300 rounded-lg overflow-hidden">
+                    <input type="text" placeholder="Buscar..." name="searchField"
+                        class="bg-transparent border-none text-sm w-full px-4 h-8 outline-none focus:ring-0" required />
+                    <button class="px-3" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
         </div>
     </div>
 </header>
