@@ -18,6 +18,7 @@ Route::post('/contact-us', [HomeController::class, 'contactUsSend'])->name('app.
     return "Mensaje enviado";
 }); */
 Route::get('/products/{productCode}', [HomeController::class, 'product'])->name('app.product');
+Route::get('/search', [HomeController::class, 'search'])->name('app.search');
 Route::get('/categories/{categoryName}', [HomeController::class, 'category'])->name('app.category');
 
 Route::middleware([
