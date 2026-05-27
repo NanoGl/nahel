@@ -37,6 +37,14 @@
         #img img {
             max-width: 33%;
         }
+
+        .btn{
+          border-radius: 0.5rem;
+          padding: 0.75rem;
+          background-color: #00134B;
+          color: white;
+          text-decoration: none;
+        }
     </style>
 </head>
 
@@ -45,7 +53,6 @@
         <img src="{{ $message->embed(public_path('images/store/NAHEL_NUEVO.png')) }}" alt="">
     </div>
     <div id="card">
-
         <h1>
             Nueva solicitud de contacto:
         </h1>
@@ -77,6 +84,12 @@
             <br>
             {{ $data['message'] }}
         </p>
+        <div style="margin-top: 40px; margin-bottom: 20px">
+            <a class="btn"
+                href="mailto:{{ $data['email'] }}?subject={{ rawurlencode('Respuesta a tu contacto') }}&body={{ rawurlencode('Hola ' . $data['name'] . ' ' . $data['last_name'] . ", te estamos contactando por tu mensaje: \n--------------------------------------------\n" . $data['message'] . "\n--------------------------------------------\nNuestra respuesta: ") }}">
+                Responder
+            </a>
+        </div>
     </div>
 </body>
 
