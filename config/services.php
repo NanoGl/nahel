@@ -40,6 +40,7 @@ return [
         'products_catalog_url' => env('NAHEL_PRODUCTS_CATALOG'),
         'products_detail_url' => env('NAHEL_PRODUCTS_DETAIL'),
         'products_similar_url' => env('NAHEL_PRODUCTS_SIMILAR'),
+        'bicycles_url' => env('NAHEL_BICYCLES'),
     ],
 
 ];

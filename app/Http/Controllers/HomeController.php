@@ -100,20 +100,57 @@ class HomeController extends Controller
         return view('app.product', compact('product', 'productImages', 'categories', 'relatedProducts'));
     }
 
-    public function category(string $categoryName)
+    public function category(Request $request, string $categoryCode)
     {
         $productsResponse = Http::get(config('services.nahel.products_catalog_url'));
-        $products = collect($productsResponse->json())
-            ->where('CATEGORIA', $categoryName)
-            ->paginate(20);
-
         $categoryResponse = Http::get(config('services.nahel.categories_url'));
+
         $category = collect($categoryResponse->json())
-            ->where('CATEGORIA', $categoryName);
+            ->where('CATEGORIA', $categoryCode);
+
+        $products = collect($productsResponse->json())
+            ->where('CATEGORIA', $categoryCode);
+
+        $rides = collect();
+        $colors = collect();
+        $genders = collect();
+
+        if ($categoryCode === 'BICI') {
+            $bicycleResponse = Http::get(config('services.nahel.bicycles_url'));
+            $bicycles = collect($bicycleResponse->json());
+
+            $rides = $bicycles->pluck('RODADA')->unique()->filter()->sort()->values();
+            $colors = $bicycles->pluck('COLOR')->unique()->filter()->sort()->values();
+            $genders = $bicycles->pluck('GENERO')->unique()->filter()->sort()->values();
+
+            $products = $bicycles
+                ->filter(function ($item) use ($request) {
+                    if (!$request->filled('ride')) return true;
+                    return $item['RODADA'] == $request->input('ride');
+                })
+                ->filter(function ($item) use ($request) {
+                    if (!$request->filled('gender')) return true;
+                    return $item['GENERO'] == $request->input('gender');
+                })
+                ->filter(function ($item) use ($request) {
+                    if (!$request->filled('color')) return true;
+                    return trim(strtolower($item['COLOR'])) == strtolower($request->input('color'));
+                })
+                ->filter(function ($item) use ($request) {
+                    if (!$request->has('isNew')) return true;
+                    return !empty(trim($item['ESNUEVO']));
+                });
+        }
+
+        $products = $products->paginate(20)->withQueryString();
 
         return view('app.category', [
             'products' => $products,
-            'categoryName' => $category->first()['DESCRIPCION']
+            'categoryName' => $category->first()['DESCRIPCION'],
+            'categoryCode' => $categoryCode,
+            'rides' => $rides,
+            'colors' => $colors,
+            'genders' => $genders
         ]);
     }
 
@@ -127,8 +164,20 @@ class HomeController extends Controller
             return str_contains(strtolower($item['CODIGO']), $search)
                 || str_contains(strtolower($item['FICHA']), $search)
                 || str_contains(strtolower($item['DESCRIPCION']), $search);
+        })->sortBy(function ($item) use ($search) {
+            if (str_contains(strtolower($item['DESCRIPCION']), $search)) {
+                $priority = 1;
+            } elseif (str_contains(strtolower($item['CODIGO']), $search)) {
+                $priority = 2;
+            } else {
+                $priority = 3;
+            }
+            return [
+                $priority,
+                $item['DESCRIPCION']
+            ];
         })->paginate(20)
-        ->withQueryString();
+            ->withQueryString();
 
         return view('app.search-results', [
             'products' => $searchResults,

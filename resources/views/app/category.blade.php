@@ -5,8 +5,13 @@
         </h1>
         <div class="bg-[var(--variable-primary)] h-2 w-24"></div>
     </div>
+
+    @if ($categoryCode == 'BICI')
+        @include('layouts.partials.app.bicycle-filter')
+    @endif
+
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 grid-cols-1 mx-10">
-        @foreach ($products as $product)
+        @forelse ($products as $product)
             <a href="{{ route('app.product', $product['CODIGO']) }}"
                 class="text-center card mx-10 my-4 flex flex-col justify-between hover:scale-105 transition-all duration-300 transform">
                 <div>
@@ -23,7 +28,11 @@
                     </div>
                 </div>
             </a>
-        @endforeach
+        @empty
+            <div class="col-span-4 text-center py-12 text-gray-500">
+                No se encontraron artículos con los filtros seleccionados.
+            </div>
+        @endforelse
     </div>
 
     <div class="mt-4 mb-4 flex justify-center">
